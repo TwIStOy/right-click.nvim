@@ -51,8 +51,12 @@ function Db:show()
     end
     vim.list_extend(res, section.items)
   end
-  local menu = ContextMenu(res)
-  menu:as_nui_menu():mount()
+  if #res > 0 then
+    local menu = ContextMenu(res)
+    menu:as_nui_menu():mount()
+  else
+    vim.notify("No right-click menu items available")
+  end
 end
 
 local M = {}
